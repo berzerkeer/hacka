@@ -1,0 +1,42 @@
+@import 'styles/variables';
+
+.sidenav {
+  flex-direction: column;
+  height: 100%;
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 4rem;
+  }
+
+  &__categories {
+    border-bottom: 2px solid $tertiaryText;
+    > li {
+      font-weight: $font-w-500;
+      margin-bottom: 1rem;
+      color: $secondaryText;
+      cursor: pointer;
+      transition: color ease-in-out 300ms;
+
+      &:hover {
+        color: $primaryText;
+      }
+
+      &:last-child {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+
+  &__tags {
+    margin-top: 1rem !important;
+    &__title {
+      font-weight: $font-w-500;
+      color: $secondaryText;
+    }
+    &__list {
+      margin-top: 1rem !important;
+    }
+  }
+}
