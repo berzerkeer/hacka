@@ -1,0 +1,14 @@
+@import 'styles/variables';
+
+.gridparent {
+  display: grid;
+  grid-template-columns: auto;
+  grid-auto-flow: row;
+  gap: 2rem;
+  margin-right: 0.5rem;
+}
+
+.page__title {
+  margin-top: 0;
+  font-weight: $font-w-600;
+}
