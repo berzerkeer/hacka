@@ -1,0 +1,16 @@
+@import 'styles/variables.scss';
+
+.header {
+  &_logo {
+    color: $primaryText;
+    letter-spacing: -2px;
+    font-weight: lighter;
+  }
+
+  &__menu {
+    color: $tertiaryText;
+    &__profiletag {
+      margin-left: 2rem;
+    }
+  }
+}
