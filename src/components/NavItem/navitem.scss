@@ -1,0 +1,41 @@
+@import 'styles/variables';
+
+.navitem {
+  margin-bottom: 1rem;
+  span {
+    color: $tertiaryText;
+    font-size: $font-sm;
+    font-weight: $font-w-500;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: color ease-in-out 300ms;
+  }
+
+  span:hover {
+    color: $secondaryText;
+  }
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+    fill: $tertiaryText;
+    transition: fill ease-in-out 300ms;
+  }
+
+  button {
+    outline: none;
+    width: 2.2rem;
+    height: 2.2rem;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+
+  button:hover {
+    svg {
+      fill: $highlightWhite;
+    }
+  }
+}
