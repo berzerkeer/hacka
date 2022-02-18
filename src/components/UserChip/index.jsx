@@ -11,7 +11,7 @@ function UserChip({ name }) {
         src={PrfPicPlaceholder}
         alt="profile-pic"
       />
-      <span className="userchip__name">{name}</span>
+      {name && <span className="userchip__name">{name}</span>}
     </div>
   );
 }
