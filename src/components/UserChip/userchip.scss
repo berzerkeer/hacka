@@ -1,0 +1,29 @@
+@import 'styles/variables';
+
+.userchip {
+  padding: 0.2rem;
+  border-radius: 50px;
+  transition: background-color ease-in-out 300ms;
+
+  &__profilepic {
+    width: 2.2rem;
+    height: 2.2rem;
+    padding: 0.1rem;
+    border: 2px solid white;
+    border-radius: 50%;
+  }
+
+  &__name {
+    font-size: $font-sm;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    font-weight: $font-w-400;
+    transition: color ease-in-out 300ms;
+  }
+
+  &:hover {
+    background-color: $primaryBgAccent;
+    cursor: pointer;
+    color: white;
+  }
+}
