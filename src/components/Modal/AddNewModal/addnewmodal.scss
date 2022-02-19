@@ -1,0 +1,63 @@
+@import 'styles/variables';
+
+.add__new {
+  gap: 2rem;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 60rem;
+  height: 4rem;
+  border-radius: 2rem;
+  background-color: $primaryBgAccent;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  .left {
+    gap: 2rem;
+  }
+
+  &__avatar {
+    img {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+
+  &__text {
+    white-space: nowrap;
+    font-weight: $font-w-500 !important;
+    font-size: 1.5rem;
+    color: $cardTextColor;
+  }
+
+  &__icon {
+    display: flex;
+    svg {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+}
+
+.footer__buttons {
+  gap: 1rem;
+  button {
+    width: 5rem;
+    height: 2rem;
+    min-width: 4rem;
+    outline: none;
+    border: none;
+    border-radius: 2rem;
+    font-size: $font-sm;
+    font-weight: $font-w-700;
+    font-family: 'poppins';
+    cursor: pointer;
+  }
+  &__submit {
+    background-color: $primaryText;
+    color: $primaryBg;
+  }
+  &__cancel {
+    background-color: transparent;
+    color: $cardTextColor;
+  }
+}
