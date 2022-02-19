@@ -1,0 +1,40 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "empId": "3636",
+      "name": "Sangeeth Sivan",
+      "posts": [],
+      "upvotes": []
+    },
+    {
+      "id": 2,
+      "empId": "1011",
+      "name": "Guts Keyonashi",
+      "posts": [],
+      "upvotes": []
+    }
+  ],
+  "post": [
+    {
+      "id": 1,
+      "title": "Low code tool",
+      "description": "Lowcode tool is great",
+      "createdBy": {
+        "name": "Sangeeth Sivan"
+      },
+      "createdAt": "21 Feb 2022",
+      "upvoteCount": "46"
+    },
+    {
+      "id": 1,
+      "title": "Low code tool",
+      "description": "Lowcode tool is great",
+      "createdBy": {
+        "name": "Sangeeth Sivan"
+      },
+      "createdAt": "21 Feb 2022",
+      "upvoteCount": "46"
+    }
+  ]
+}
