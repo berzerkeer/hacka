@@ -1,5 +1,8 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import UserChip from 'components/UserChip';
 import React from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 
 import IconBadge from 'components/IconBadge';
 
@@ -9,8 +12,10 @@ import { ReactComponent as ArrowUp } from 'assets/icons/arrow-up.svg';
 import './hackathoncard.scss';
 
 function HackathonCard({ testText }) {
+  const { pageId } = useParams();
+  const history = useHistory();
   function handleClick() {
-    console.log('clicked');
+    history.push(`${pageId}/challenge/2`);
   }
 
   return (
@@ -23,7 +28,7 @@ function HackathonCard({ testText }) {
         </div>
         <div className="card__details">
           <div className="hackathon__info">
-            <h2 className="hackathon__info__title">
+            <h2 className="hackathon__info__title" onClick={handleClick}>
               Lowcode tool for Payments
             </h2>
             <p className="hackathon__info__description">
