@@ -1,0 +1,49 @@
+@import 'styles/variables';
+
+.challenge__info {
+  flex-direction: column;
+  padding: 0 5rem;
+  max-width: 60rem;
+  margin: 3rem auto;
+  &__title {
+    margin: 0;
+  }
+  &__description {
+    margin-top: 3rem;
+    font-size: $font-med;
+    font-weight: $font-w-500;
+    color: $cardTextColor;
+    text-align: justify;
+  }
+
+  .challenge__user__info {
+    width: 100%;
+    padding-block-start: 1rem;
+    gap: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+    &__meta {
+      .chip img {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+      .annotation {
+        color: $tertiaryText;
+        font-size: $font-v-sm;
+        margin-left: 0.2rem;
+        .name {
+          margin-left: 0.2rem;
+          color: $primaryText;
+        }
+      }
+    }
+
+    &__post {
+      .date {
+        display: block;
+        font-size: $font-v-sm;
+        color: $tertiaryText;
+      }
+    }
+  }
+}
