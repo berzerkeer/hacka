@@ -1,0 +1,40 @@
+@import 'styles/variables';
+
+.nav_icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.nav_name {
+  color: $tertiaryText;
+  font-size: $font-sm;
+  font-weight: $font-w-500;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: color ease-in-out 300ms;
+  &:hover {
+    color: $secondaryText;
+  }
+}
+
+.main {
+  .nav_icon svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .nav_name {
+    font-weight: $font-w-500;
+    font-size: $font-med;
+    color: $secondaryText;
+
+    &:hover {
+      color: $primaryText;
+    }
+  }
+}
+
+.tag,
+.main {
+  gap: 1rem;
+}
