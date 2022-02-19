@@ -7,15 +7,34 @@
   align-items: center;
   border-radius: 14px;
   color: $primaryText;
+  cursor: pointer;
+  transition: all ease-in-out 300ms;
+
   &__icon {
     svg {
       width: 1.25rem;
       height: 1.25rem;
       fill: $cardTextColor;
+      transition: all ease-in-out 300ms;
     }
   }
   &__label {
     margin: 0;
     font-weight: $font-w-700;
+    color: $cardTextColor;
+    transition: all ease-in-out 300ms;
+  }
+
+  &:hover {
+    .badge__container__icon {
+      svg {
+        fill: $primaryText;
+        transform: translateY(-10px);
+      }
+    }
+
+    .badge__container__label {
+      color: $primaryText;
+    }
   }
 }
