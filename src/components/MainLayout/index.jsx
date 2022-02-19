@@ -21,13 +21,13 @@ function MainLayout() {
             <Route exact path="/">
               <Redirect from="/" to="/all" />
             </Route>
-            <Route path="/:pageId">
-              <StackLayout />
-            </Route>
             <Route path="/:pageId/challenge/:id" exact>
               <Post />
             </Route>
             <Route path="/:pageId/:tagId" exact>
+              <StackLayout />
+            </Route>
+            <Route path="/:pageId">
               <StackLayout />
             </Route>
           </Switch>

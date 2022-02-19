@@ -12,3 +12,40 @@
   margin-top: 0;
   font-weight: $font-w-600;
 }
+
+.add__new {
+  gap: 2rem;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 60rem;
+  height: 4rem;
+  border-radius: 2rem;
+  background-color: $primaryBgAccent;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  .left {
+    gap: 2rem;
+  }
+
+  &__avatar {
+    img {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+
+  &__text {
+    white-space: nowrap;
+    font-weight: 300;
+    color: $cardTextColor;
+  }
+
+  &__icon {
+    display: flex;
+    svg {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+}
