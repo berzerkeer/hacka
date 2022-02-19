@@ -1,14 +1,16 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Header from 'components/Header';
 import MainLayout from 'components/MainLayout';
+import Auth from 'pages/Auth';
 
 function App() {
+  const isLoggedIn = false;
   return (
     <Router>
-      <Header />
-      <MainLayout />
+      <Switch>
+        <Route path="/">{isLoggedIn ? <MainLayout /> : <Auth />}</Route>
+      </Switch>
     </Router>
   );
 }

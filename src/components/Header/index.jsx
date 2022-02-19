@@ -2,7 +2,7 @@ import UserChip from 'components/UserChip';
 import React from 'react';
 import './header.scss';
 
-function Header() {
+function Header({ isLoggedIn }) {
   return (
     <header className="header">
       <nav className="container flex flex-jc-sb flex-ai-c">

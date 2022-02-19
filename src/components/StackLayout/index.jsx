@@ -5,8 +5,7 @@ import HackathonCard from 'components/HackathonCard';
 import './stacklayout.scss';
 
 function StackLayout() {
-  const { pageId, tagId } = useParams();
-  console.log(pageId, tagId);
+  const { pageId } = useParams();
   return (
     <>
       <h2 className="page__title">{pageId}</h2>
