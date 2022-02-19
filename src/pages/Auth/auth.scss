@@ -1,0 +1,21 @@
+@import 'styles/variables';
+
+.two_column {
+  width: 100%;
+}
+.auth__container {
+  height: 100vh;
+  width: 100vh;
+  display: block;
+  min-width: 40%;
+}
+
+.login__hero {
+  background-color: $primaryText;
+  min-width: 60%;
+  color: $primaryBg;
+  letter-spacing: -0.75rem;
+  h1 {
+    font-size: 8rem;
+  }
+}
