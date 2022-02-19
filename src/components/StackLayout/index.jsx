@@ -1,11 +1,15 @@
-import HackathonCard from 'components/HackathonCard';
 import React from 'react';
+import { useParams } from 'react-router-dom';
+import HackathonCard from 'components/HackathonCard';
+
 import './stacklayout.scss';
 
-function StackLayout({ testText, title }) {
+function StackLayout() {
+  const { pageId, tagId } = useParams();
+  console.log(pageId, tagId);
   return (
     <>
-      <h2 className="page__title">{title}</h2>
+      <h2 className="page__title">{pageId}</h2>
       <div className="gridparent">
         <HackathonCard />
       </div>
