@@ -5,7 +5,7 @@ import MainLayout from 'components/MainLayout';
 import Auth from 'pages/Auth';
 
 function App() {
-  const isLoggedIn = false;
+  const isLoggedIn = true;
   return (
     <Router>
       <Switch>
