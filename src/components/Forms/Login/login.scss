@@ -1,0 +1,43 @@
+@import 'styles/variables';
+
+.form {
+  height: 25rem;
+  width: 25rem;
+  background-color: $primaryBgAccent;
+
+  &__group {
+    gap: 1rem;
+  }
+
+  &__submit__btn {
+    width: 5rem;
+    min-width: 4rem;
+    outline: none;
+    border: none;
+    background-color: $primaryText;
+    color: $primaryBg;
+    font-size: $font-sm;
+    font-weight: $font-w-700;
+    font-family: 'poppins';
+    cursor: pointer;
+  }
+
+  &__control {
+    background-color: transparent;
+    outline: none;
+    color: $highlightWhite;
+    width: 12rem;
+    border: 1px solid $tertiaryText;
+    border-width: 0 0 1px 0;
+    padding: 0.5rem 0.2rem;
+    font-family: 'poppins';
+
+    &::placeholder {
+      color: $tertiaryText;
+    }
+
+    &:focus {
+      border-color: $highlightWhite;
+    }
+  }
+}
