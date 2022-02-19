@@ -15,7 +15,8 @@
     overflow-x: hidden;
     scrollbar-color: $primaryBgAccent;
     scroll-behavior: smooth;
-    margin-left: 30px;
+    margin: 0 auto;
+    padding: 0 5rem;
     scrollbar-width: thin;
 
     &::-webkit-scrollbar {

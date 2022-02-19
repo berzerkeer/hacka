@@ -1,35 +1,33 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
-import NavItem from 'components/NavItem';
 import Sidebar from 'components/Sidebar';
+import StackLayout from 'components/StackLayout';
+import Post from 'components/Post';
 
 import './mainlayout.scss';
-import StackLayout from 'components/StackLayout';
-import HackathonCard from 'components/HackathonCard';
 
 function MainLayout() {
   return (
     <div className="page__layout container">
       <div className="page__layout__sidebar">
-        <Sidebar>
-          <NavItem tagName="tech" />
-          <NavItem tagName="feature" />
-          <NavItem tagName="piratenight" />
-          <NavItem tagName="chapter" />
-          <NavItem tagName="tooling" />
-          <NavItem tagName="devops" />
-          <NavItem tagName="performance" />
-        </Sidebar>
+        <Sidebar />
       </div>
       <div className="page__layout__content">
-        <Routes>
-          <Route
-            path="/"
-            element={<StackLayout testText="all" title="#popular" />}
-          />
-          <Route exact path="/card" element={<HackathonCard />} />
-        </Routes>
+        <Switch>
+          <Route path="/" exact>
+            <Redirect from="/" to="all/challenge/1234" />
+          </Route>
+          <Route path="/:pageId" exact>
+            <StackLayout />
+          </Route>
+          <Route path="/:pageId/challenge/:id" exact>
+            <Post />
+          </Route>
+          <Route path="/:pageId/:tagId" exact>
+            <StackLayout />
+          </Route>
+        </Switch>
       </div>
     </div>
   );
