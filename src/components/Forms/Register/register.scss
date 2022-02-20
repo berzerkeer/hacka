@@ -1,0 +1,64 @@
+@import 'styles/variables';
+
+.register__form {
+  height: 25rem;
+  width: 25rem;
+  background-color: $primaryBgAccent;
+  flex-direction: column;
+
+  &__group {
+    gap: 1rem;
+    flex-direction: column;
+    padding: 2rem;
+    width: 100%;
+  }
+
+  &__footer {
+    gap: 1rem;
+    button {
+      width: 5rem;
+      min-width: 4rem;
+      height: 3rem;
+      outline: none;
+      border: none;
+      font-size: $font-sm;
+      font-weight: $font-w-700;
+      font-family: 'poppins';
+      cursor: pointer;
+    }
+    &__submit__btn {
+      background-color: $primaryText;
+      color: $primaryBg;
+    }
+    // &__signin__btn {
+    //   background-color: $primaryBg;
+    //   color: $cardTextColor;
+    // }
+  }
+
+  &__control {
+    background-color: transparent;
+    outline: none;
+    color: $highlightWhite;
+    width: 100%;
+    border: 1px solid $tertiaryText;
+    border-width: 0 0 1px 0;
+    padding: 0.5rem 0.2rem;
+    font-family: 'poppins';
+
+    &::placeholder {
+      color: $cardTextColor;
+    }
+
+    &:focus {
+      border-color: $highlightWhite;
+    }
+  }
+  .login__redirect {
+    display: block;
+    font-size: $font-sm;
+    font-weight: $font-w-600;
+    margin-top: 3rem;
+    cursor: pointer;
+  }
+}
