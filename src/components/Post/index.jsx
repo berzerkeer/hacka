@@ -11,7 +11,7 @@ function Post(props) {
         <div className="challenge__user__info flex flex-ai-c">
           <div className="challenge__user__info__meta flex flex-ai-c">
             <span className="chip">
-              <UserChip />
+              <UserChip isMini />
             </span>
             <span className="annotation">
               posted by <span className="name">Sangeeth Sivan</span>
