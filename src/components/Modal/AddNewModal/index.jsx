@@ -1,4 +1,6 @@
 import React, { useRef, useState } from 'react';
+import { useUserStore } from 'store/user';
+import { useAppstore } from 'store/globalStore';
 
 import UserChip from 'components/UserChip';
 import NewChallengeForm from 'components/Forms/NewChallenge';
@@ -9,6 +11,7 @@ import './addnewmodal.scss';
 
 export default function AddNewModal() {
   const [isOpen, setIsOpen] = useState(false);
+  const { currentUser } = useUserStore((state) => state);
   const modal = useRef(null);
 
   function toggleScrollLock() {
@@ -36,11 +39,55 @@ export default function AddNewModal() {
     closeModal();
   };
 
-  const handleSubmit = (event) => {
+  const createPost = async (data) => {
+    let responseObj = null;
+    try {
+      const res = await fetch('http://localhost:8000/post', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+      responseObj = await res.json();
+    } catch (error) {
+      console.error('Error creating post', error);
+    }
+    return responseObj;
+  };
+
+  const updateUser = async (postId) => {
+    let responseObj = null;
+    try {
+      const res = await fetch(`http://localhost:8000/user/${currentUser.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          posts: [...currentUser.posts, postId]
+        })
+      });
+      responseObj = await res.json();
+    } catch (error) {
+      console.error('Error updating user', error);
+    }
+    return responseObj;
+  };
+
+  const handleSubmit = async (event, postData) => {
     event.preventDefault();
     event.stopPropagation();
-    console.log('submit');
-    closeModal();
+    try {
+      const data = await createPost(postData);
+      const user = await updateUser(postData.id);
+      useAppstore.getStore().updatePosts(data);
+      useUserStore.getState().setCurrentUser(user);
+    } catch (error) {
+      console.error('Something went wrong', error);
+    } finally {
+      closeModal();
+    }
   };
 
   const handleClose = (event) => {
@@ -65,7 +112,7 @@ export default function AddNewModal() {
       <div className="add__new flex flex-ai-c" onClick={openModal}>
         <div className="flex flex-ai-c left">
           <span className="add__new__avatar">
-            <UserChip />
+            <UserChip isMini />
           </span>
           <h2 className="add__new__text">Click to add new post</h2>
         </div>

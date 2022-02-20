@@ -1,17 +1,13 @@
 import React from 'react';
-import PrfPicPlaceholder from 'assets/images/dp.png';
-
+import Avatar from 'assets/images/dp.png';
 import './userchip.scss';
 
-function UserChip({ name }) {
+function UserChip({ user, isMini }) {
+  const firstName = user && user.name.split(' ')[0];
   return (
     <div className="userchip flex flex-ai-c">
-      <img
-        className="userchip__profilepic"
-        src={PrfPicPlaceholder}
-        alt="profile-pic"
-      />
-      {name && <span className="userchip__name">{name}</span>}
+      <img className="userchip__profilepic" src={Avatar} alt="profile-pic" />
+      {!isMini && <span className="userchip__name">{firstName}</span>}
     </div>
   );
 }

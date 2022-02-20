@@ -1,18 +1,17 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import UserChip from 'components/UserChip';
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import dayjs from 'dayjs';
 
 import IconBadge from 'components/IconBadge';
+import UserChip from 'components/UserChip';
 
-import { ReactComponent as ThumbsUp } from 'assets/icons/thumbs-up.svg';
 import { ReactComponent as ArrowUp } from 'assets/icons/arrow-up.svg';
 
 import './hackathoncard.scss';
 
-function HackathonCard({ testText }) {
+function HackathonCard({ post }) {
   const { pageId } = useParams();
+  const { title, description, createdBy, createdAt } = post;
   const history = useHistory();
   function handleClick() {
     history.push(`${pageId}/challenge/2`);
@@ -29,30 +28,23 @@ function HackathonCard({ testText }) {
         <div className="card__details">
           <div className="hackathon__info">
             <h2 className="hackathon__info__title" onClick={handleClick}>
-              Lowcode tool for Payments
+              {title}
             </h2>
-            <p className="hackathon__info__description">
-              Lowcode no code is booming and i believe a low code platform to
-              build payments integrations is a greay way to go about. Lowcode no
-              code is booming and i believe a low code platform to build
-              payments integrations is a greay way to go about. Lowcode no code
-              is booming and i believe a low code platform to build payments
-              integrations is a greay way to go about. Lowcode no code is
-              booming and i believe a low code platform to build payments
-              integrations is a greay way to go about.
-            </p>
+            <p className="hackathon__info__description">{description}</p>
           </div>
           <div className="user__info flex flex-ai-c">
             <div className="user__info__meta flex flex-ai-c">
               <span className="chip">
-                <UserChip />
+                <UserChip isMini />
               </span>
               <span className="annotation">
-                posted by <span className="name">Sangeeth Sivan</span>
+                posted by <span className="name">{createdBy.name}</span>
               </span>
             </div>
             <div className="user__info__post">
-              <span className="date">12 hr ago</span>
+              <span className="date">
+                {dayjs(createdAt).format('DD MMM YYYY')}
+              </span>
             </div>
           </div>
         </div>
