@@ -3,7 +3,7 @@
 .card {
   flex-direction: column;
   gap: 1rem;
-  max-width: 60rem;
+  width: 100%;
   &__content {
     background-color: $primaryBgAccent;
     border-radius: 8px;

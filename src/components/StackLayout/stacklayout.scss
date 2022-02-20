@@ -5,7 +5,31 @@
   grid-template-columns: auto;
   grid-auto-flow: row;
   gap: 2rem;
-  margin-right: 0.5rem;
+  padding: 0 0.75rem;
+  min-width: 30rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-color: $primaryBgAccent;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 6px;
+    background-clip: content-box;
+  }
+
+  &::-webkit-scrollbar-track:horizontal {
+    margin: 0 100px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $primaryBgAccent;
+    border-radius: 4px;
+  }
 }
 
 .page__title {
@@ -17,7 +41,6 @@
   gap: 2rem;
   flex-direction: row;
   justify-content: space-between;
-  max-width: 60rem;
   height: 4rem;
   border-radius: 2rem;
   background-color: $primaryBgAccent;

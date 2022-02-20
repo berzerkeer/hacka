@@ -11,6 +11,20 @@
     color: $tertiaryText;
     &__profiletag {
       margin-left: 2rem;
+      .logout__btn {
+        outline: none;
+        border: none;
+        margin-left: 2rem;
+        background-color: transparent;
+        color: hsl(0, 60%, 50%);
+        font-size: $font-sm;
+        font-weight: $font-w-600;
+        font-family: 'poppins';
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
   }
 }
