@@ -1,17 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { nanoid } from 'nanoid';
+import { useUserStore } from 'store/user';
+
 import './newchallenge.scss';
 
 function NewChallengeForm({ onSubmit, onClose }) {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [tags, setTags] = useState([]);
+
+  const { currentUser } = useUserStore((state) => state);
+
+  console.log('user', currentUser);
+
+  const handleTags = (e) => {
+    const tagsArr = e.target.value?.split(',');
+    setTags(tagsArr);
+  };
+
+  const generateSimpleSlug = (text) =>
+    text
+      .toLowerCase()
+      .replace(/[^\w ]+/g, '')
+      .replace(/ +/g, '-');
+
+  const handleSubmit = (e) => {
+    const { id, name, avatar } = currentUser;
+    const postData = {
+      id: nanoid(10),
+      title,
+      description,
+      tags,
+      slug: generateSimpleSlug(`${title}${nanoid(2)}`),
+      createdBy: { id, name, avatar },
+      createdAt: Date.now(),
+      upvoteCount: 1
+    };
+    onSubmit(e, postData);
+  };
+
   return (
     <form
-      onSubmit={onSubmit}
+      onSubmit={handleSubmit}
       className="add__new__form flex flex-ai-c flex-jc-c"
     >
       <div className="add__new__form__group flex flex-jc-c flex-ai-c">
         <input
-          onChange={(e) => {
-            console.log(e.target.value);
-          }}
+          onBlur={(e) => setTitle(e.target.value)}
           id="post-title"
           name="title"
           className="add__new__form__control"
@@ -20,8 +55,8 @@ function NewChallengeForm({ onSubmit, onClose }) {
           autoComplete="off"
         />
         <textarea
-          onChange={(e) => {
-            console.log(e.target.value);
+          onBlur={(e) => {
+            setDescription(e.target.value);
           }}
           id="post-description"
           name="description"
@@ -31,9 +66,7 @@ function NewChallengeForm({ onSubmit, onClose }) {
           autoComplete="off"
         />
         <input
-          onChange={(e) => {
-            console.log(e.target.value);
-          }}
+          onBlur={handleTags}
           id="post-tags"
           name="tags"
           className="add__new__form__control"
