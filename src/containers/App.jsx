@@ -7,7 +7,6 @@ import Auth from 'pages/Auth';
 
 function App() {
   const { isLoggedIn } = useUserStore((state) => state);
-  console.log(isLoggedIn);
   return (
     <Router>
       <Switch>
