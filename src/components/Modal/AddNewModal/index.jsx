@@ -12,6 +12,7 @@ import './addnewmodal.scss';
 export default function AddNewModal() {
   const [isOpen, setIsOpen] = useState(false);
   const { currentUser } = useUserStore((state) => state);
+  const { tags } = useAppstore((state) => state);
   const modal = useRef(null);
 
   function toggleScrollLock() {
@@ -76,13 +77,39 @@ export default function AddNewModal() {
     return responseObj;
   };
 
+  const updateTags = async (postData) => {
+    let responseObj = null;
+    const postTags = postData.tags;
+
+    const tagsObjPayload = postTags.reduce((obj, key) => {
+      obj[key] = tags[key] ? [...tags[key], postData.id] : [postData.id];
+      return obj;
+    }, {});
+
+    try {
+      const res = await fetch(`http://localhost:8000/tags`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ ...tags, ...tagsObjPayload })
+      });
+      responseObj = await res.json();
+    } catch (error) {
+      console.error('Error updating user', error);
+    }
+    return responseObj;
+  };
+
   const handleSubmit = async (event, postData) => {
     event.stopPropagation();
     try {
       const data = await createPost(postData);
       const user = await updateUser(postData.id);
+      const tagsObj = await updateTags(postData);
       useAppstore.getState().setPosts(data);
       useUserStore.getState().setCurrentUser(user);
+      useAppstore.getState().setTags(tagsObj);
     } catch (error) {
       console.error('Something went wrong', error);
     } finally {

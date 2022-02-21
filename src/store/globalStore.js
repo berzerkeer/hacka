@@ -4,6 +4,7 @@ import { devtools } from 'zustand/middleware';
 const appInitialState = {
   posts: [],
   users: [],
+  tags: { tech: [], feature: [] },
   currentPostId: ''
 };
 
@@ -57,6 +58,11 @@ export const useAppstore = create(
     setCurrentPostId: (postId) => {
       set(() => ({
         currentPostId: postId
+      }));
+    },
+    setTags: (tags) => {
+      set((state) => ({
+        tags: { ...state.tags, ...tags }
       }));
     }
   }))

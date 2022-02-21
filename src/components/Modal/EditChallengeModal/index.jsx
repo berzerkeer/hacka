@@ -12,6 +12,7 @@ import './editchallengemodal.scss';
 export default function EditChallengeModal({ post }) {
   const [isOpen, setIsOpen] = useState(false);
   const modal = useRef(null);
+  const { tags } = useAppstore((state) => state);
 
   function toggleScrollLock() {
     document.querySelector('html').classList.toggle('scroll-lock');
@@ -55,11 +56,37 @@ export default function EditChallengeModal({ post }) {
     return responseObj;
   };
 
+  const updateTags = async (postId, postData) => {
+    let responseObj = null;
+    const postTags = postData.tags;
+
+    const tagsObjPayload = postTags.reduce((obj, key) => {
+      obj[key] = tags[key] ? [...new Set([...tags[key], postId])] : [postId];
+      return obj;
+    }, {});
+
+    try {
+      const res = await fetch(`http://localhost:8000/tags`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ ...tags, ...tagsObjPayload })
+      });
+      responseObj = await res.json();
+    } catch (error) {
+      console.error('Error updating user', error);
+    }
+    return responseObj;
+  };
+
   const handleSubmit = async (event, postData) => {
     event.stopPropagation();
     try {
       const data = await updatePost(postData);
+      const tagsObj = await updateTags(post.id, postData);
       usePoststore.getState().setPost(data);
+      useAppstore.getState().setTags(tagsObj);
       useAppstore.getState().getPosts();
     } catch (error) {
       console.error('Something went wrong', error);

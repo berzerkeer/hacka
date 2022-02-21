@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Header from 'components/Header';
@@ -8,8 +8,18 @@ import StackLayout from 'components/StackLayout';
 import Post from 'components/Post';
 
 import './mainlayout.scss';
+import { useAppstore } from 'store/globalStore';
 
 function MainLayout() {
+  useEffect(() => {
+    async function getTags() {
+      const res = await fetch('http://localhost:8000/tags');
+      const tagsObj = await res.json();
+      useAppstore.getState().setTags(tagsObj);
+    }
+    getTags();
+  }, []);
+
   return (
     <>
       <Header />
