@@ -1,0 +1,34 @@
+@import 'styles/variables';
+.delete__modal__body {
+  gap: 2rem;
+  padding: 2rem;
+  background-color: $primaryBgAccent;
+  .confirmation__text {
+    color: $cardTextColor;
+    font-weight: $font-w-600;
+  }
+}
+.delete__footer__buttons {
+  gap: 1rem;
+  justify-content: flex-end;
+  button {
+    width: 5rem;
+    height: 2rem;
+    min-width: 4rem;
+    outline: none;
+    border: none;
+    font-size: $font-sm;
+    font-weight: $font-w-700;
+    font-family: 'poppins';
+    cursor: pointer;
+  }
+  .delete__btn {
+    border-radius: 0;
+    background-color: hsl(0%, 60%, 40%);
+    color: hsl(0, 0%, 84%);
+  }
+  .cancel__btn {
+    background-color: transparent;
+    color: $cardTextColor;
+  }
+}
