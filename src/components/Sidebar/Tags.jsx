@@ -1,47 +1,15 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import NavMenuItem from 'components/NavMenuItem';
-
-const predefinedTags = [
-  {
-    id: 1,
-    route: 'tech',
-    name: 'tech'
-  },
-  {
-    id: 2,
-    route: 'feature',
-    name: 'feature'
-  },
-  {
-    id: 3,
-    route: 'piratenight',
-    name: 'piratenight'
-  },
-  {
-    id: 4,
-    route: 'chapter',
-    name: 'chapter'
-  },
-  {
-    id: 5,
-    route: 'tooling',
-    name: 'tooling'
-  },
-  {
-    id: 6,
-    route: 'devops',
-    name: 'devops'
-  }
-];
+import { useAppstore } from 'store/globalStore';
 
 function Tags() {
-  const tags = useRef(predefinedTags);
+  const { tags } = useAppstore((state) => state);
 
   return (
     <>
-      {tags.current.map((route) => (
-        <li key={route.id}>
-          <NavMenuItem route={route.route} name={route.name} />
+      {Object.keys(tags).map((tag) => (
+        <li key={tag}>
+          <NavMenuItem route={tag} name={tag} />
         </li>
       ))}
     </>
