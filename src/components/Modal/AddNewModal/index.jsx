@@ -65,7 +65,8 @@ export default function AddNewModal() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          posts: [...currentUser.posts, postId]
+          posts: [...currentUser.posts, postId],
+          upvotes: [...currentUser.upvotes, postId]
         })
       });
       responseObj = await res.json();
@@ -76,12 +77,11 @@ export default function AddNewModal() {
   };
 
   const handleSubmit = async (event, postData) => {
-    event.preventDefault();
     event.stopPropagation();
     try {
       const data = await createPost(postData);
       const user = await updateUser(postData.id);
-      useAppstore.getStore().updatePosts(data);
+      useAppstore.getState().setPosts(data);
       useUserStore.getState().setCurrentUser(user);
     } catch (error) {
       console.error('Something went wrong', error);
@@ -92,7 +92,6 @@ export default function AddNewModal() {
 
   const handleClose = (event) => {
     event.stopPropagation();
-    console.log('close');
     closeModal();
   };
 
@@ -127,9 +126,12 @@ export default function AddNewModal() {
           onKeyDown={onKeyDown}
           onClickOutside={onClickOutside}
           component={
-            <NewChallengeForm onSubmit={handleSubmit} onClose={handleClose} />
+            <NewChallengeForm
+              onSubmit={handleSubmit}
+              onClose={handleClose}
+              data={currentUser}
+            />
           }
-          data={{ code: 'test' }}
         />
       ) : null}
     </>
