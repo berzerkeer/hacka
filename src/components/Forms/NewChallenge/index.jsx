@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
-import { useUserStore } from 'store/user';
 
 import './newchallenge.scss';
 
-function NewChallengeForm({ onSubmit, onClose }) {
+function NewChallengeForm({ onSubmit, onClose, data }) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [tags, setTags] = useState([]);
-
-  const { currentUser } = useUserStore((state) => state);
-
-  console.log('user', currentUser);
 
   const handleTags = (e) => {
     const tagsArr = e.target.value?.split(',');
@@ -25,13 +20,14 @@ function NewChallengeForm({ onSubmit, onClose }) {
       .replace(/ +/g, '-');
 
   const handleSubmit = (e) => {
-    const { id, name, avatar } = currentUser;
+    e.preventDefault();
+    const { id, name, avatar } = data;
     const postData = {
       id: nanoid(10),
       title,
       description,
       tags,
-      slug: generateSimpleSlug(`${title}${nanoid(2)}`),
+      slug: generateSimpleSlug(`${title.substring(0, 20)}${nanoid(2)}`),
       createdBy: { id, name, avatar },
       createdAt: Date.now(),
       upvoteCount: 1
