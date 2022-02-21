@@ -6,6 +6,8 @@
   width: 100%;
   text-overflow: ellipsis;
   overflow: hidden;
+  height: max-content;
+  min-height: 12rem;
 
   &__content {
     background-color: $primaryBgAccent;

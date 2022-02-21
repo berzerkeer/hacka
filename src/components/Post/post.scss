@@ -1,7 +1,7 @@
 @import 'styles/variables';
 
 .back__btn {
-  margin: 3rem;
+  margin: 3rem 0 0 3rem;
   cursor: pointer;
   gap: 1rem;
   font-weight: $font-w-600;
@@ -23,7 +23,7 @@
   padding: 0 5rem;
   margin: 0 auto;
   overflow: auto;
-  min-width: 45rem;
+  min-width: 62rem;
   scrollbar-color: $primaryBgAccent;
   scroll-behavior: smooth;
   scrollbar-width: thin;
