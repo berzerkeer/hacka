@@ -32,6 +32,32 @@
   }
 }
 
+.sort__options {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-right: 1rem;
+
+  span {
+    font-size: $font-sm;
+    font-weight: $font-w-500;
+    color: $cardTextColor;
+    cursor: pointer;
+  }
+
+  .active {
+    color: $primaryText;
+  }
+
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0.25rem;
+    cursor: pointer;
+  }
+}
+
 .page__title {
   margin-top: 0;
   font-weight: $font-w-600;
