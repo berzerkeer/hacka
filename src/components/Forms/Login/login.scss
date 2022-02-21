@@ -50,4 +50,10 @@
     margin-top: 3rem;
     cursor: pointer;
   }
+
+  .error__msg {
+    font-size: $font-v-sm;
+    color: hsl(0, 60%, 50%);
+    font-weight: $font-w-600;
+  }
 }

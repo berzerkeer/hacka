@@ -69,7 +69,7 @@ function RegisterForm() {
     >
       <div className="register__form__group flex flex-jc-c">
         <input
-          onBlur={handleEmpIdInput}
+          onChange={handleEmpIdInput}
           id="emp-signup-id"
           name="empId"
           className="register__form__control"

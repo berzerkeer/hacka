@@ -6,10 +6,15 @@ import './login.scss';
 
 function LoginForm() {
   const [empId, setEmpId] = useState('');
+  const [showErr, setShowErr] = useState(false);
   const history = useHistory();
+
   const handleInput = (e) => {
     e.preventDefault();
     setEmpId(e.target.value);
+    if (showErr) {
+      setShowErr(false);
+    }
   };
 
   async function handleSubmit(e) {
@@ -23,7 +28,8 @@ function LoginForm() {
         useUserStore.getState().setIsLoggedIn(true);
         useUserStore.getState().setCurrentUser(user);
       } else {
-        console.log('No user found');
+        setShowErr(true);
+        console.info('No user found');
       }
     } catch (error) {
       console.error('Error fetching user data for login', error);
@@ -50,6 +56,7 @@ function LoginForm() {
           Login
         </button>
       </div>
+      {showErr && <span className="error__msg">No user found</span>}
       <span className="create__account" onClick={handleClick}>
         Create an account
       </span>
