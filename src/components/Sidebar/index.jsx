@@ -1,7 +1,7 @@
-import React from 'react';
-import { useRouteMatch, useLocation } from 'react-router-dom';
+import React, { useRef } from 'react';
 
 import NavMenuItem from 'components/NavMenuItem';
+import TagsComponent from './Tags';
 
 import './sidebar.scss';
 
@@ -23,44 +23,13 @@ const routes = [
   }
 ];
 
-const predefinedTags = [
-  {
-    id: 1,
-    route: 'tech',
-    name: 'tech'
-  },
-  {
-    id: 2,
-    route: 'feature',
-    name: 'feature'
-  },
-  {
-    id: 3,
-    route: 'piratenight',
-    name: 'piratenight'
-  },
-  {
-    id: 4,
-    route: 'chapter',
-    name: 'chapter'
-  },
-  {
-    id: 5,
-    route: 'tooling',
-    name: 'tooling'
-  },
-  {
-    id: 6,
-    route: 'devops',
-    name: 'devops'
-  }
-];
-
 function Sidebar() {
+  const routesRef = useRef(routes);
+
   return (
     <nav className="sidenav flex">
       <ul className="sidenav__categories">
-        {routes.map((route) => (
+        {routesRef.current.map((route) => (
           <li key={route.id}>
             <NavMenuItem
               isMain
@@ -74,11 +43,7 @@ function Sidebar() {
       <div className="sidenav__tags">
         <span className="sidenav__tags__title">tags</span>
         <ul className="sidenav__tags__list">
-          {predefinedTags.map((route) => (
-            <li key={route.id}>
-              <NavMenuItem route={route.route} name={route.name} />
-            </li>
-          ))}
+          <TagsComponent />
         </ul>
       </div>
     </nav>
