@@ -38,3 +38,23 @@
     }
   }
 }
+
+.upvoted {
+  .badge__container__icon {
+    svg {
+      fill: $primaryText;
+      transform: none;
+    }
+  }
+  .badge__container__label {
+    color: $primaryText;
+  }
+
+  &:hover {
+    .badge__container__icon {
+      svg {
+        transform: none;
+      }
+    }
+  }
+}
