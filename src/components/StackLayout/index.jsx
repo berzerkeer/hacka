@@ -47,25 +47,27 @@ function StackLayout() {
     <>
       <h2 className="page__title">{pageId}</h2>
       <AddNewModal />
-      <div className="sort__options">
-        {sortOrder === 'asc' ? (
-          <SortAscIcon onClick={() => handleSortOrder('desc')} />
-        ) : (
-          <SortDescIcon onClick={() => handleSortOrder('asc')} />
-        )}
-        <span
-          className={`upvote ${sortBy === 'upvoteCount' ? 'active' : null}`}
-          onClick={() => handleSortBy('upvoteCount')}
-        >
-          Upvotes
-        </span>
-        <span
-          className={`date ${sortBy === 'createdAt' ? 'active' : null}`}
-          onClick={() => handleSortBy('createdAt')}
-        >
-          Date
-        </span>
-      </div>
+      {posts && posts.length > 0 && (
+        <div className="sort__options">
+          {sortOrder === 'asc' ? (
+            <SortAscIcon onClick={() => handleSortOrder('desc')} />
+          ) : (
+            <SortDescIcon onClick={() => handleSortOrder('asc')} />
+          )}
+          <span
+            className={`upvote ${sortBy === 'upvoteCount' ? 'active' : null}`}
+            onClick={() => handleSortBy('upvoteCount')}
+          >
+            Upvotes
+          </span>
+          <span
+            className={`date ${sortBy === 'createdAt' ? 'active' : null}`}
+            onClick={() => handleSortBy('createdAt')}
+          >
+            Date
+          </span>
+        </div>
+      )}
       <div className="gridparent">
         {posts.map((post) => (
           <HackathonCard key={post.id} post={post} />
