@@ -7,6 +7,7 @@
   text-overflow: ellipsis;
   overflow: hidden;
   min-height: 15rem;
+
   &__content {
     background-color: $primaryBgAccent;
     border-radius: 8px;
@@ -65,6 +66,7 @@
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
         overflow: hidden;
+        word-break: break-all;
       }
 
       &__description {
@@ -75,6 +77,7 @@
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
         overflow: hidden;
+        word-break: break-all;
       }
       &__details {
         display: flex;
