@@ -55,6 +55,7 @@
     .hackathon__info {
       text-overflow: ellipsis;
       overflow: hidden;
+      min-height: 8rem;
       .title__content {
         justify-content: space-between;
       }
