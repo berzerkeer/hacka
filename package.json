@@ -20,7 +20,8 @@
     "zustand": "^3.7.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start ",
+    "dev": "npm run server & npm run start",
     "server": "json-server --watch database/db.json --port 8000",
     "build": "react-scripts build",
     "test": "react-scripts test",
