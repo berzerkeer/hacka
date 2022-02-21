@@ -1,15 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 
 import { useUserStore } from 'store/user';
 
 import './register.scss';
+import { useAppstore } from 'store/globalStore';
 
 function RegisterForm() {
   const [empId, setEmpId] = useState('');
   const [empName, setEmpName] = useState('');
+  const [showErr, setShowErr] = useState(false);
   const history = useHistory();
+
+  useEffect(() => {
+    useAppstore.getState().getUsers();
+  }, []);
+
+  const { users } = useAppstore((state) => state);
+
+  const handleEmpIdInput = (e) => {
+    const { value } = e.target;
+    setEmpId(value);
+    const isDuplicate = users?.find((user) => user.empId === value);
+    if (isDuplicate) {
+      setShowErr(true);
+    } else {
+      setShowErr(false);
+    }
+  };
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -17,7 +36,9 @@ function RegisterForm() {
       const formData = {
         id: nanoid(),
         empId,
-        name: empName
+        name: empName,
+        posts: [],
+        upvotes: []
       };
       const res = await fetch('http://localhost:8000/user', {
         method: 'POST',
@@ -48,7 +69,7 @@ function RegisterForm() {
     >
       <div className="register__form__group flex flex-jc-c">
         <input
-          onChange={(e) => setEmpId(e.target.value)}
+          onBlur={handleEmpIdInput}
           id="emp-signup-id"
           name="empId"
           className="register__form__control"
@@ -57,6 +78,7 @@ function RegisterForm() {
           autoComplete="off"
           required
         />
+        {showErr && <span className="error__msg">User already present</span>}
         <input
           onChange={(e) => setEmpName(e.target.value)}
           id="emp-signup-name"
@@ -68,7 +90,11 @@ function RegisterForm() {
           required
         />
         <div className="register__form__footer flex flex-ai-c">
-          <button className="register__form__footer__submit__btn" type="submit">
+          <button
+            disabled={showErr}
+            className="register__form__footer__submit__btn"
+            type="submit"
+          >
             Sign up
           </button>
           {/* <button className="register__form__footer__signin__btn">
