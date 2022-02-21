@@ -4,10 +4,30 @@
   flex-direction: column;
   gap: 1rem;
   width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
   &__content {
     background-color: $primaryBgAccent;
     border-radius: 8px;
     padding: 2rem;
+
+    .action__icons {
+      gap: 1rem;
+      display: none;
+      svg {
+        width: 1.25rem;
+        height: 1.25rem;
+        color: $cardTextColor;
+        cursor: pointer;
+      }
+      .delete__icon svg:hover {
+        color: hsl(0%, 60%, 40%);
+      }
+      .edit__icon svg:hover {
+        color: $primaryText;
+      }
+    }
   }
 
   &__meta {
@@ -20,6 +40,8 @@
     font-size: $font-normal;
     font-weight: $font-w-500;
     width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
 
     button {
       outline: none;
@@ -30,8 +52,19 @@
     }
 
     .hackathon__info {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      .title__content {
+        justify-content: space-between;
+      }
+
       &__title {
         margin: 0;
+        cursor: pointer;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
       }
 
       &__description {
@@ -97,6 +130,11 @@
           color: $tertiaryText;
         }
       }
+    }
+  }
+  &:hover {
+    .action__icons {
+      display: flex;
     }
   }
 }
