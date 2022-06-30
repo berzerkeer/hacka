@@ -5,6 +5,8 @@ import { useUserStore } from 'store/user';
 import MainLayout from 'components/MainLayout';
 import Auth from 'pages/Auth';
 
+// test
+
 function App() {
   const { isLoggedIn } = useUserStore((state) => state);
   return (
