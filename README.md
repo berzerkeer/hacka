@@ -14,6 +14,3 @@
     - all => all posts
     - popular => sort by upvotes (desc) -- TODO
     - trending => upvotes > some threshold && sort by recently Created -- TODO
-  - Sidebar also has all the tags
-    - clicking on a tag route to /:pageId/:tagId => example /all/tech , /popular/tooling etc..
-    - filter posts by tags - TODO
