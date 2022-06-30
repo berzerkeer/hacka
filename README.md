@@ -1,11 +1,9 @@
 #Note to self :
 
-- Perfomance Improvements :
-
-  - Virtualize hackathon cards list.
-  - use local states where possible, pass lists as props.
-  - check unncessary re renders.
-  - memoize lists component properly.
+- Virtualize hackathon cards list.
+- use local states where possible, pass lists as props.
+- check unncessary re renders.
+- memoize lists component properly.
 
 - Design & Implementation
   - Three main components => Sidebar, Main layout , Auth.
